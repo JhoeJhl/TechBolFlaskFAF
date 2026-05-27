@@ -24,7 +24,7 @@ def create_app():
     
 
     #2. Registrar el blueprint (Para cada modulo)
-    app.register_blueprint(bp_clientes, url_prefix="/miembros")
+    app.register_blueprint(bp_clientes, url_prefix="/clientes")
     app.register_blueprint(bp_pedidos, url_prefix="/pedidos")
     app.register_blueprint(bp_productos, url_prefix="/productos")
     app.register_blueprint(bp_core, url_prefix="/")

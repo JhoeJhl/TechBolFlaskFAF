@@ -19,6 +19,7 @@ content %}
     <table class="table table-hover align-middle">
       <thead class="table-light">
         <tr>
+          <th>ID</th>
           <th>Nombre</th>
           <th>Telefono</th>
           <th width="180">Acciones</th>
@@ -29,6 +30,8 @@ content %}
         {% for item in clientes %}
 
         <tr>
+          <td>{{item.id}}</td>
+
           <td>{{ item.nombre }}</td>
 
           <td>{{ item.telefono }}</td>
