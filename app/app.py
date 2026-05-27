@@ -17,14 +17,17 @@ def create_app():
     migrate.init_app(app, db)
 
     #1. Importacion del blueprint (Para cada modulo)
-    # from blueprintapp.miembros.routes import bp_miembro
-    # from blueprintapp.core.routes import bp_core
-    # from blueprintapp.tareas.routes import bp_tarea
+    from app.clientes.routes import bp_clientes
+    from app.pedidos.routes import bp_pedidos
+    from app.productos.routes import bp_productos
+    from app.core.routes import bp_core
+    
 
     #2. Registrar el blueprint (Para cada modulo)
-    # app.register_blueprint(bp_miembro, url_prefix="/miembros")
-    # app.register_blueprint(bp_core, url_prefix="/")
-    # app.register_blueprint(bp_tarea, url_prefix="/tareas")
+    app.register_blueprint(bp_clientes, url_prefix="/miembros")
+    app.register_blueprint(bp_pedidos, url_prefix="/pedidos")
+    app.register_blueprint(bp_productos, url_prefix="/productos")
+    app.register_blueprint(bp_core, url_prefix="/")
     
     return app
 

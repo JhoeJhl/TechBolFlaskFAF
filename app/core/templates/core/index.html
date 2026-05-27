@@ -1,0 +1,46 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+<div class="container mt-5">
+  <div class="card shadow-sm border-0">
+    <div class="card-body p-4">
+      <h1 class="h3 mb-4 text-dark">Panel Principal</h1>
+
+      <div class="list-group">
+        <a
+          href="{{ url_for('bp_clientes.index') }}"
+          class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+        >
+          <span>
+            <b>Clientes</b>
+          </span>
+
+          <span class="text-muted"> → </span>
+        </a>
+
+        <a
+          href="{{ url_for('bp_productos.index') }}"
+          class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+        >
+          <span>
+            <b>Productos</b>
+          </span>
+
+          <span class="text-muted"> → </span>
+        </a>
+
+        <a href="{{ url_for('bp_pedidos.index') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+        >
+          <span>
+            <b>Pedidos</b>
+          </span>
+
+          <span class="text-muted"> → </span>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
