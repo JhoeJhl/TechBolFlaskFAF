@@ -1,4 +1,5 @@
 from flask import request, render_template, redirect, url_for, Blueprint
+from datetime import datetime
 
 from app.app import db
 from app.pedidos.models import Pedido
@@ -13,7 +14,7 @@ def index():
     pedidos = Pedido.query.all()
 
     return render_template(
-        'pedidos/index.html',
+        'pedido/index.html',
         pedidos=pedidos
     )
 
@@ -26,14 +27,17 @@ def create():
         clientes = Cliente.query.all()
         productos = Producto.query.all()
 
-        return render_template('pedidos/create.html',clientes=clientes,productos=productos)
+        return render_template('pedido/create.html',clientes=clientes,productos=productos)
 
     elif request.method == 'POST':
 
-        fecha = request.form.get('fecha')
+        fecha_str = request.form.get('fecha')
         monto = request.form.get('monto')
         cliente_id = request.form.get('cliente_id')
         producto_id = request.form.get('producto_id')
+
+        # Convertir fecha_str a objeto date
+        fecha = datetime.strptime(fecha_str, '%Y-%m-%d').date()
 
         # Crear objeto pedido
         pedido = Pedido(fecha=fecha, monto=monto,cliente_id=cliente_id,producto_id=producto_id)
@@ -58,7 +62,7 @@ def edit(id):
         productos = Producto.query.all()
 
         return render_template(
-            'pedidos/edit.html',
+            'pedido/edit.html',
             pedido=pedido,
             clientes=clientes,
             productos=productos
@@ -66,13 +70,13 @@ def edit(id):
 
     elif request.method == 'POST':
 
-        fecha = request.form.get('fecha')
+        fecha_str = request.form.get('fecha')
         monto = request.form.get('monto')
         cliente_id = request.form.get('cliente_id')
         producto_id = request.form.get('producto_id')
 
         # Actualizar datos
-        pedido.fecha = fecha
+        pedido.fecha = datetime.strptime(fecha_str, '%Y-%m-%d').date()
         pedido.monto = monto
         pedido.cliente_id = cliente_id
         pedido.producto_id = producto_id

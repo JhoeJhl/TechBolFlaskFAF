@@ -10,7 +10,7 @@ def index():
 
     productos = Producto.query.all()
 
-    return render_template('productos/index.html',productos=productos)
+    return render_template('producto/index.html',productos=productos)
 
 
 @bp_productos.route("/create", methods=['GET', 'POST'])
@@ -18,7 +18,7 @@ def create():
 
     if request.method == 'GET':
 
-        return render_template('productos/create.html')
+        return render_template('producto/create.html')
 
     elif request.method == 'POST':
 
@@ -45,7 +45,7 @@ def edit(id):
     if request.method == 'GET':
 
         return render_template(
-            'productos/edit.html',
+            'producto/edit.html',
             producto=producto
         )
 

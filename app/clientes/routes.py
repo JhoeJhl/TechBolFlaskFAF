@@ -12,7 +12,7 @@ def index():
     clientes = Cliente.query.all()
 
     return render_template(
-        'clientes/index.html',
+        'cliente/index.html',
         clientes=clientes
     )
 
@@ -22,7 +22,7 @@ def create():
 
     if request.method == 'GET':
 
-        return render_template('clientes/create.html')
+        return render_template('cliente/create.html')
 
     elif request.method == 'POST':
 
@@ -45,21 +45,21 @@ def create():
 
 @bp_clientes.route("/edit/<int:id>", methods=['GET', 'POST'])
 def edit(id):
-    # Buscar el clientes por id
-    clientes = Cliente.query.get_or_404(id)
+    # Buscar el cliente por id
+    cliente = Cliente.query.get_or_404(id)
     if request.method == 'GET':
 
         return render_template(
-            'clientes/edit.html',
-            clientes=clientes
+            'cliente/edit.html',
+            cliente=cliente
         )
     elif request.method == 'POST':
         nombre = request.form.get('nombre')
         telefono = request.form.get('telefono')
       
         #Actualizacion de datos
-        clientes.nombre = nombre
-        clientes.telefono = telefono
+        cliente.nombre = nombre
+        cliente.telefono = telefono
         
         db.session.commit()
 
@@ -70,11 +70,11 @@ def edit(id):
 @bp_clientes.route("/delete/<int:id>", methods=['POST'])
 def delete(id):
 
-    # Buscar el clientes
-    clientes = Cliente.query.get_or_404(id)
+    # Buscar el cliente
+    cliente = Cliente.query.get_or_404(id)
 
     # Eliminar de la base de datos
-    db.session.delete(clientes)
+    db.session.delete(cliente)
     db.session.commit()
 
     # Redireccionar al listado

@@ -48,13 +48,7 @@ content %}
 
               <option
                 value="{{ cliente.id }}"
-                {%
-                if
-                cliente.id=""
-                ="pedido.cliente_id"
-                %}selected{%
-                endif
-                %}
+                {% if cliente.id == pedido.cliente_id %}selected{% endif %}
               >
                 {{ cliente.nombre }}
               </option>
@@ -70,7 +64,7 @@ content %}
             <select name="producto_id" class="form-select" required>
               {% for producto in productos %}
 
-              <option value="{{ producto.id }}" {% if producto.id=" " ="pedido.producto_id"%}selected{%endif%}>
+              <option value="{{ producto.id }}" {% if producto.id == pedido.producto_id %}selected{% endif %}>
                 {{ producto.nombre }}
               </option>
 

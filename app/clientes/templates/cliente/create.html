@@ -6,7 +6,7 @@
 <div class="row justify-content-center mt-5">
     <div class="col-md-6 col-lg-5">
         
-        <div class="card shadow-lg border-0 rounded-4" style="background-color: #1e1e1e; color: #f8f9fa;">
+        <div class="card shadow-lg border-0 rounded-4">
             <div class="card-body p-5">
                 
                 <h4 class="mb-4 text-center fw-light border-bottom border-secondary pb-3">
@@ -16,31 +16,31 @@
                 <form action="{{ url_for('bp_clientes.create') }}" method="POST">
                     
                     <div class="mb-4">
-                        <label for="nombre" class="form-label text-secondary small text-uppercase" style="letter-spacing: 1px;">
+                        <label for="nombre" class="form-label text-secondary small text-uppercase">
                             Nombre Completo
                         </label>
                         <input type="text" 
                                id="nombre"
                                name="nombre" 
-                               class="form-control bg-dark text-light border-secondary shadow-none" 
+                               class="form-control border-secondary shadow-none" 
                                placeholder="Ej. Juan Pérez" 
                                required>
                     </div>
 
                     <div class="mb-5">
-                        <label for="telefono" class="form-label text-secondary small text-uppercase" style="letter-spacing: 1px;">
+                        <label for="telefono" class="form-label text-secondary small text-uppercase" >
                             Teléfono
                         </label>
                         <input type="tel" 
                                id="telefono"
                                name="telefono" 
-                               class="form-control bg-dark text-light border-secondary shadow-none" 
+                               class="form-control border-secondary shadow-none" 
                                placeholder="Ej. 77123456" 
                                required>
                     </div>
 
                     <div class="d-grid gap-3">
-                        <button type="submit" class="btn btn-primary rounded-pill py-2 border-0" style="background-color: #4f46e5;">
+                        <button type="submit" class="btn btn-primary rounded-pill py-2 border-0">
                             Guardar Cliente
                         </button>
                         <a href="{{ url_for('bp_clientes.index') }}" class="btn btn-outline-light rounded-pill py-2">
