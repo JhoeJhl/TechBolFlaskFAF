@@ -1,0 +1,66 @@
+{% extends "base.html" %} {% block title %}Clientes{% endblock %} {% block
+content %}
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h3 class="mb-0">Listado de Clientes</h3>
+
+      <a
+        href="{{ url_for('bp_clientes.create') }}"
+        class="btn btn-primary btn-sm"
+      >
+        Nuevo Cliente
+      </a>
+    </div>
+
+    {% if miembros %}
+
+    <table class="table table-hover align-middle">
+      <thead class="table-light">
+        <tr>
+          <th>Nombre</th>
+          <th>Telefono</th>
+          <th width="180">Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for item in clientes %}
+
+        <tr>
+          <td>{{ item.nombre }}</td>
+
+          <td>{{ item.telefono }}</td>
+
+          <td>
+            <a
+              href="{{ url_for('bp_clientes.edit', id=item.id) }}"
+              class="btn btn-warning btn-sm"
+            >
+              Editar
+            </a>
+
+            <form
+              action="{{ url_for('bp_clientes.delete', id=item.id) }}"
+              method="POST"
+              class="d-inline"
+            >
+              <button class="btn btn-danger btn-sm">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+
+        {% endfor %}
+      </tbody>
+    </table>
+
+    {% else %}
+
+    <div class="alert alert-secondary mb-0">No hay clientes registrados.</div>
+
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}
