@@ -1,0 +1,101 @@
+{% extends "base.html" %} {% block title %}Registrar Nuevo Producto{% endblock
+%} {% block content %}
+
+<div class="row justify-content-center mt-5">
+  <div class="col-md-6 col-lg-5">
+    <div
+      class="card shadow-lg border-0 rounded-4"
+      style="background-color: #1e1e1e; color: #f8f9fa"
+    >
+      <div class="card-body p-5">
+        <h4
+          class="mb-4 text-center fw-light border-bottom border-secondary pb-3"
+        >
+          Nuevo Producto
+        </h4>
+
+        <form action="{{ url_for('bp_productos.create') }}" method="POST">
+          <!-- Nombre -->
+          <div class="mb-4">
+            <label
+              for="nombre"
+              class="form-label text-secondary small text-uppercase"
+              style="letter-spacing: 1px"
+            >
+              Nombre
+            </label>
+
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              class="form-control bg-dark text-light border-secondary shadow-none"
+              placeholder="Ej. Laptop Lenovo"
+              required
+            />
+          </div>
+
+          <!-- Precio -->
+          <div class="mb-4">
+            <label
+              for="precio"
+              class="form-label text-secondary small text-uppercase"
+              style="letter-spacing: 1px"
+            >
+              Precio
+            </label>
+
+            <input
+              type="number"
+              step="0.01"
+              id="precio"
+              name="precio"
+              class="form-control bg-dark text-light border-secondary shadow-none"
+              placeholder="Ej. 3500"
+              required
+            />
+          </div>
+
+          <!-- Stock -->
+          <div class="mb-5">
+            <label
+              for="stock"
+              class="form-label text-secondary small text-uppercase"
+              style="letter-spacing: 1px"
+            >
+              Stock
+            </label>
+
+            <input
+              type="number"
+              id="stock"
+              name="stock"
+              class="form-control bg-dark text-light border-secondary shadow-none"
+              placeholder="Ej. 20"
+              required
+            />
+          </div>
+
+          <div class="d-grid gap-3">
+            <button
+              type="submit"
+              class="btn btn-primary rounded-pill py-2 border-0"
+              style="background-color: #4f46e5"
+            >
+              Guardar Producto
+            </button>
+
+            <a
+              href="{{ url_for('bp_productos.index') }}"
+              class="btn btn-outline-light rounded-pill py-2"
+            >
+              Cancelar
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
